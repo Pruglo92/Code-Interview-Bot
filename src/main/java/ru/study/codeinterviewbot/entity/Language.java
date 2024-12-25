@@ -1,13 +1,8 @@
 package ru.study.codeinterviewbot.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+import ru.study.codeinterviewbot.enums.Languages;
 
 import java.util.List;
 
@@ -16,14 +11,15 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "languages")
+@Table(name = "language")
 public class Language extends BaseEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "name",unique = true, nullable = false)
     private String name;
 
-    @Column(unique = true, nullable = false)
-    private String command;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "command", unique = true, nullable = false)
+    private Languages command;
 
     @OneToMany(mappedBy = "language")
     private List<JavaSection> javaSection;

@@ -11,10 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 public abstract class BaseEntity {
 
-    /**
-     * Идентификатор сущности.
-     */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

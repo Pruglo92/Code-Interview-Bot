@@ -13,10 +13,10 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "java_questions")
-public class JavaQuestion extends BaseEntity{
+@Table(name = "java_question")
+public class JavaQuestion extends BaseEntity {
 
-    @Column
+    @Column(name = "text")
     private String text;
 
     @ManyToOne

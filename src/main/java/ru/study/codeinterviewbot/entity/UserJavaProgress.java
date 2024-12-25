@@ -11,11 +11,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users_ java_progress")
+@Table(name = "user_ java_progress")
 public class UserJavaProgress extends BaseEntity {
 
-    @Column
-    private Boolean is_correct;
+    @Column(name = "is_correct")
+    private Boolean isCorrect;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
