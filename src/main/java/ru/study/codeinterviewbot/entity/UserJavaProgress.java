@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_ java_progress")
+@Table(name = "user_java_progress")
 public class UserJavaProgress extends BaseEntity {
 
     @Column(name = "is_correct")
