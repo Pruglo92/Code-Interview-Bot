@@ -11,17 +11,16 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "languages")
+@Table(name = "language")
 public class Language extends BaseEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "name",unique = true, nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(unique = true, nullable = false)
+    @Column(name = "command", unique = true, nullable = false)
     private Languages command;
 
     @OneToMany(mappedBy = "language")
     private List<JavaSection> javaSection;
-
 }

@@ -11,17 +11,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "java_answers")
-public class JavaAnswer extends BaseEntity{
+@Table(name = "java_answer")
+public class JavaAnswer extends BaseEntity {
 
-    @Column
+    @Column(name = "text")
     private String text;
 
-    @Column
-    private Boolean isCorrect;;
+    @Column(name = "is_correct")
+    private Boolean isCorrect;
 
     @ManyToOne
     @JoinColumn(name = "java_question_id")
     private JavaQuestion javaQuestion;
-
 }

@@ -16,11 +16,8 @@ import java.util.List;
 @Table(name = "java_section")
 public class JavaSection extends BaseEntity {
 
-    @Column
+    @Column(name = "name")
     private String name;
-
-    @Column
-    public String command;
 
     @ManyToOne
     @JoinColumn(name = "language_id")
@@ -31,5 +28,4 @@ public class JavaSection extends BaseEntity {
 
     @OneToMany(mappedBy = "javaSection")
     private List<UserJavaProgress> userJavaProgress;
-
 }
