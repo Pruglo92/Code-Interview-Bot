@@ -37,9 +37,19 @@ public class CodeInterviewBot extends TelegramLongPollingBot {
                     } catch (TelegramApiException e) {
                         throw new RuntimeException(e);
                     }
-
                 }
+            }
+        } else if (update.hasCallbackQuery()) {
+            String callbackData = update.getCallbackQuery().getData();
 
+            for (CommandHandler handler : commandHandlers) {
+                if (callbackData.equals(handler.getCommand())) {
+                    try {
+                        execute(handler.handle(update));
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
             }
         }
     }
