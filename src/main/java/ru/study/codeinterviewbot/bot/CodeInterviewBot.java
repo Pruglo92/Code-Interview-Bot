@@ -40,7 +40,7 @@ public class CodeInterviewBot extends TelegramLongPollingBot {
                 }
             }
         } else if (update.hasCallbackQuery()) {
-            String callbackData = update.getCallbackQuery().getData();
+            String callbackData = update.getCallbackQuery().getData().split(":")[0];
 
             for (CommandHandler handler : commandHandlers) {
                 if (callbackData.equals(handler.getCommand())) {
