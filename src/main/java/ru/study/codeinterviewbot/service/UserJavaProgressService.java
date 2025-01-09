@@ -6,4 +6,6 @@ public interface UserJavaProgressService {
     void saveProgress(UserJavaProgress progress);
 
     String getUserProgressForSection(Long sectionId);
+
+    void clearUserProgressForSection(Long chatId, String sectionId);
 }

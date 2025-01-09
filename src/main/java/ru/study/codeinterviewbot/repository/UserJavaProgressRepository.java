@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserJavaProgressRepository extends JpaRepository<UserJavaProgress, Long> {
 
     List<UserJavaProgress> findAllByJavaSectionId(Long sectionId);
+
+    void deleteAllByUserIdAndJavaSectionId(Long userId, Long sectionId);
 }

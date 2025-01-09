@@ -8,9 +8,5 @@ import java.util.List;
 public interface JavaQuestionService {
     List<JavaQuestion> getUnansweredQuestionsBySection(String sectionId, Long chatId);
 
-    SendMessage handleQuestions(
-            Long chatId,
-            List<JavaQuestion> questions,
-            String noQuestionsText
-    );
+    SendMessage handleQuestions(Long chatId, List<JavaQuestion> questions, String sectionId);
 }

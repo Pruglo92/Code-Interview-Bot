@@ -5,5 +5,5 @@ import ru.study.codeinterviewbot.entity.User;
 public interface UserService {
     void saveUser(User user);
 
-    User getUserByChatId(Long userId);
+    User getUserByChatId(Long chatId);
 }

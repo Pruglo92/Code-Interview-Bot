@@ -5,24 +5,26 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.study.codeinterviewbot.handlers.CommandHandler;
-import ru.study.codeinterviewbot.service.JavaQuestionService;
+import ru.study.codeinterviewbot.handlers.StartCommandHandler;
+import ru.study.codeinterviewbot.service.UserJavaProgressService;
 
 @Component
 @RequiredArgsConstructor
-public class JavaSectionCommandHandler implements CommandHandler {
+public class JavaClearUserProgressCommandHandler implements CommandHandler {
 
-    private final JavaQuestionService javaQuestionService;
+    private final UserJavaProgressService userJavaProgressService;
+    private final StartCommandHandler startCommandHandler;
 
     @Override
     public SendMessage handle(Update update) {
         var chatId = update.getCallbackQuery().getMessage().getChatId();
         var sectionId = update.getCallbackQuery().getData().split(":")[1];
-        var questions = javaQuestionService.getUnansweredQuestionsBySection(sectionId, chatId);
-        return javaQuestionService.handleQuestions(chatId, questions, sectionId);
+        userJavaProgressService.clearUserProgressForSection(chatId, sectionId);
+        return startCommandHandler.handle(update);
     }
 
     @Override
     public String getCommand() {
-        return "/java_section";
+        return "/clear_start";
     }
 }

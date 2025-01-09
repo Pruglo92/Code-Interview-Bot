@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.study.codeinterviewbot.entity.UserJavaProgress;
 import ru.study.codeinterviewbot.repository.UserJavaProgressRepository;
 import ru.study.codeinterviewbot.service.UserJavaProgressService;
+import ru.study.codeinterviewbot.service.UserService;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class UserJavaProgressServiceImpl implements UserJavaProgressService {
 
     private final UserJavaProgressRepository userJavaProgressRepository;
+    private final UserService userService;
 
     @Override
     public void saveProgress(UserJavaProgress progress) {
@@ -34,5 +36,11 @@ public class UserJavaProgressServiceImpl implements UserJavaProgressService {
 
         return String.format("Всего ответов: %d\nПравильных ответов: %d\nПроцент правильных: %.2f%%",
                 totalAnswers, correctAnswers, correctPercentage);
+    }
+
+    @Override
+    public void clearUserProgressForSection(Long chatId, String sectionId) {
+        var userId = userService.getUserByChatId(chatId).getId();
+        userJavaProgressRepository.deleteAllByUserIdAndJavaSectionId(userId, Long.valueOf(sectionId));
     }
 }
